@@ -21,6 +21,9 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-.history
-.history/src
-.vscode
+*.history
+*.history/src
+*.vscode
+
+react-task-tutorial-01/.history
+react-task-tutorial-01/.vscode
