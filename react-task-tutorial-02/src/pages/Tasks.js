@@ -22,7 +22,7 @@ const Tasks = () => {
        {tableCols.map((col) => (
         <td key={col}>
 
-         {task[col]}
+         {task[col.toLowerCase()]}
 
         </td>
 

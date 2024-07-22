@@ -1,6 +1,6 @@
-import { Navigate } from "react-router-dom";
 import { useState } from 'react';
 import { useReducer } from 'react';
+import { useNavigate } from "react-router-dom";
 
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
@@ -56,6 +56,7 @@ const LoginForm = () => {
   const [email, setEmail] = useState("jonnygold@gmail.com");
   const [password, setPassword] = useState("1234");
   const [user, dispatch] = useReducer(userReducer, Users);
+  const navigate = useNavigate();
 
 
   const loginUser = (email, password) => {
@@ -73,7 +74,7 @@ const LoginForm = () => {
     <div >
 
       {user.isLoggedIn && (
-        <Navigate to="/tasks" replace={true} />
+        navigate('/tasks', { state: { user:user } })
       )}
   
       <Form onSubmit={(e) => {

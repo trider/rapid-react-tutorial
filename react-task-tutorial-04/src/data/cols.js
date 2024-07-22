@@ -1,9 +1,9 @@
 const tableCols = [
- 'name',
- 'description',
- 'added',
- 'updated',
- 'status',
+ 'Name',
+ 'Description',
+ 'Added',
+ 'Updated',
+ 'Status',
 ];
 
 export default tableCols
