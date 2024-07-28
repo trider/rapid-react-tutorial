@@ -1,11 +1,16 @@
 import { useLocation } from "react-router-dom";
-import userTasks from "../data/tasks";
-import tableCols from "../data/cols";
+
 import Container from 'react-bootstrap/Container';
 import Table from 'react-bootstrap/Table';
-import NavbarComponent from '../components/Navigation';
+
+
 import Footer from '../components/Footer';
-import Alert from 'react-bootstrap/Alert';
+import userTasks from "../data/tasks";
+import tableCols from "../data/cols";
+
+import NavbarComponent from '../components/Navigation';
+import Info from "../components/Info";
+
 
 
 
@@ -15,27 +20,25 @@ import Alert from 'react-bootstrap/Alert';
 const Tasks = () => { 
 const location = useLocation();
 const user = location.state;
+
  
   return (
     <div>
       <NavbarComponent />
+
+  
       
       <Container style={{ padding: "2%" }}>
-        <h1>Tasks</h1>
-        <Alert variant="info">
-          Welcome: {user.name}
-          <span style={{ float: "right" }}>
-          <button className="btn btn-sm btn-primary" onClick={(e)=>{
-            alert(JSON.stringify(user));
-          }} >View Profile</button>
-            
-          </span>
-          
+        <Info {...user} infoType='profile' variantInfo="info" />
+      
 
-        </Alert>
-        <Table striped bordered hover size="lg">
+      {/* <Profile {...user.user} /> */}
+        <h1>Tasks</h1>
+ 
+      <Table striped bordered hover size="lg">
         <thead>
           <tr>
+
             {tableCols.map((col) => (
               <th key={col}>{col}</th>
             ))}
@@ -56,19 +59,18 @@ const user = location.state;
         ))}
     
           
-        </tbody>    
+        </tbody>
+       
         
 
         
 
       </Table>
-      
-      <Alert variant="secondary">
-        Status: { user.isLoggedIn ? 'Authenticated' : 'Not Authenticated' }
-        
-          
+    
 
-       </Alert>
+      <Info {...user} infoType='status' variantInfo="secondary" />
+      
+     
       </Container>
       
       
