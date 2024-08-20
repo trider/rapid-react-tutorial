@@ -1,70 +1,191 @@
-# Getting Started with Create React App
+# ReactJS for Angular Developers Part 1: Routing
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+In a web application, routing refers to how a user navigates from point A to point B. In most cases, the user lands on the home page and clicks on a link to the page they are interested in. Once the target page is displayed, they can return to the home via the browser’s back button or explore links to other pages displayed on any page or through navigation elements, such as a top bar or side menu. 
 
-## Available Scripts
+## Objectives
+In this article, we will build the foundations of our task management application. We will create two pages. The first is a placeholder Login page with a title and link to the application’s Home (Tasks) page. We will also create a placeholder Home page with a link to the Login page.
 
-In the project directory, you can run:
+## Routing in Angular
+Since the release of Angular 2.0, routing in Angular is handled by a built-in routing component. While nobody forces you to use Angular routing, it’s fairly hard to build an Angular app without it. Once you achieve a basic understanding of Angular routing, you realize that routing is more than a navigation mechanism, it defines the structure of your application and provides a hierarchical map of how each part links together. In addition, Angular routing provides a mechanism that ensures only authorized users can access specific pages (AuthGuard), handles URL parameterization, and includes page metadata. 
 
-### `npm start`
+To illustrate the point, here is the Angular version of our pages. First, when we create our app with the Angular CLI, we will be asked if we want to include the Angular Router.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+After creating the Login and home components, we update each component’s .ts file to reference the 
 
-### `npm test`
+```
+RouterLink module.
+import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+@Component({
+ selector: 'app-login', 
+ standalone: true,
+ imports: [ RouterLink ],
+ templateUrl: './login.component.html',
+ styleUrl: './login.component.scss'
+})
+export class LoginComponent {}
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Next, we update each component’s HTML pages.
+```
+<h1>Login</h1>
+<p>Part 1: The Basics</p>
+<p><a routerLink="/home">Home</a></p>
+```
 
-### `npm run build`
+Once that’s done, we update our app-routing.module with the routes of each component and indicate the default page that will be opened on launch.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+const routes: Routes = [
+ { path: '', redirectTo: '/login', pathMatch: 'full' },
+ { path: 'login', component: LoginComponent },
+ { path: 'home', component: HomeComponent }
+];
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+@NgModule({
+ imports: [RouterModule.forRoot(routes)],
+ exports: [RouterModule]
+})
+export class AppRoutingModule { }
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+## Getting Started
+Now, let’s build the same application with React. Unlike Angular, there is no equivalent CLI. So, before we can get started, will need to install Create React App. Next, we need to create our React app with the create-react-app command.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
+npx create-react-app react-task-app
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Next, we open the src/App.js and remove the boilerplate code.
 
-## Learn More
+```
+import './App.css';
+function App() {
+ return (
+   <div className="App"></div>
+ );
+}
+export default App;
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Now let’s create a folder called pages that contains two files Login.js and Tasks.js
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+Add the following code to Login.js.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```
+const Login = () => {
+ return (
+   <div>
+     <h1>Login</h1>
+     <p>Part 1: The Basics</p>
+   </div>
+ );
+}
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+export default Login;
+```
 
-### Making a Progressive Web App
+Next, update Tasks.js
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```
+const Tasks = () => {
+ return (
+   <div>
+     <h1>Tasks</h1>
+     <p>TBD</p>
+   </div>
+ );
+}
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+export default Tasks;
+```
 
-### Deployment
+With the pages in place, we need to reference them from App.js.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```
+import Login from './pages/Login';
+import Tasks from './pages/Tasks';
+```
 
-### `npm run build` fails to minify
+## React Routing
+Once we have created our basic app, we can add Routing. Since React has no default router, we now install the React Router. 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```
+npm install react-router-dom
+```
+
+React Router includes a number of different Routers, but since our needs are pretty basic, we will use the BrowserRouter. This stores a link’s URL in the browser’s address bar and lets you navigate forward and backward to and from the page. In our App.js file, let’s add a reference to BrowserRouter. 
+
+```
+import { BrowserRouter } from "react-router-dom";
+To use the BrowserRouter, we must also define Routes and Route elements, so we will also need to reference these elements.
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+```
+
+Now we will need to add the Browser router to the App function with a child Routes object. We will define the Routes for each page.
+
+```
+function App() {
+ return (
+   <div className="App">
+     <BrowserRouter>
+       <Routes>
+         <Route path="/" element={<Login />} />
+         <Route path="/tasks" element={<Tasks />} />
+       </Routes>
+     </BrowserRouter>
+
+
+   </div>
+ );
+}
+```
+
+To navigate between pages, we will need to add a link object to each page. First, let’s update Login.js
+
+```
+import {  Link } from "react-router-dom";
+const Login = () => {
+ return (
+   <div>
+     <h1>Login</h1>
+     <p>Part 1: The Basics</p>
+     <Link to="/tasks">Go to tasks</Link>
+   </div>
+ );
+}
+export default Login;
+```
+
+Next, we update Tasks.js.
+
+```
+import {  Link } from "react-router-dom";
+
+
+const Tasks = () => {
+ return (
+   <div>
+     <h1>Tasks</h1>
+     <p>TBD</p>
+     <Link to="/">Go to login</Link>
+   </div>
+ );
+}
+
+
+export default Tasks;
+```
+
+The final step is to launch the App with NPM Start.
