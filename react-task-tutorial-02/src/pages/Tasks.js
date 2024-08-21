@@ -37,7 +37,9 @@ const Tasks = () => {
       
 
      </table>
-      <Link to="/">Go to login</Link>
+      <p>
+        <Link to="/">Logout</Link>
+      </p>
     </div>
   );
 }

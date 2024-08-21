@@ -15,7 +15,7 @@ const Login = () => {
 
   return (
     <div className="card">
-      <h1>Login: Part 2</h1>
+      <h1>Part 2:Login</h1>
       {user && (
         <Navigate to="/tasks" replace={true} />
       )}
