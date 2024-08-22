@@ -7,7 +7,6 @@ import './_pages.css';
 const Login = () => {
 
 
-
   const [email, setEmail] = useState("jonnygold@gmail.com");
   const [password, setPassword] = useState("1234");
   const [user, setUser] = useState();
