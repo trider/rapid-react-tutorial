@@ -1,10 +1,10 @@
 # ReactJS for Angular Developers Part 1: Routing
 
-In a web application, routing refers to how a user navigates from point A to point B. In most cases, the user lands on the home page and clicks on a link to the page they are interested in. Once the target page is displayed, they can return to the home via the browser’s back button or explore links to other pages displayed on any page or through navigation elements, such as a top bar or side menu. 
+In a web application, routing refers to how a user navigates from point A to point B. In most cases, the user lands on the home page and clicks on a link to the page they are interested in. Once the target page is displayed, they can return to the home via the browser’s back button or explore links to other pages displayed on any page or through navigation elements, such as a top bar or side menu.
 
 ## Objectives
 
-In this article, we will build the foundations of our task management application. We will create two pages. The first is a placeholder Login page with a title and link to the application’s Home (Tasks) page. 
+In this article, we will build the foundations of our task management application. We will create two pages. The first is a placeholder Login page with a title and link to the application’s Home (Tasks) page.
 
 ![Login Page](react-task-tutorial-01-login.png)
 
@@ -143,7 +143,7 @@ Once we have created our basic app, we can add Routing. Since React has no defau
 npm install react-router-dom
 ```
 
-React Router includes a number of different Routers, but since our needs are pretty basic, we will use the BrowserRouter. This stores a link’s URL in the browser’s address bar and lets you navigate forward and backward to and from the page. In our App.js file, let’s add a reference to BrowserRouter. 
+React Router includes a number of different Routers, but since our needs are pretty basic, we will use the BrowserRouter. This stores a link’s URL in the browser’s address bar and lets you navigate forward and backward to and from the page. In our App.js file, let’s add a reference to BrowserRouter.
 
 ```javascript
 import { BrowserRouter } from "react-router-dom";
