@@ -1,70 +1,140 @@
-# Getting Started with Create React App
+# **ReactJS for Angular Developers Part 3: Components and Presenting Data**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+In the first part of this series, we added a form to the Login page. The form enabled a user to type their email address and password.
 
-## Available Scripts
+![Login Page](react-task-tutorial-02-login.png)
 
-In the project directory, you can run:
+When the user presses Submit, the app checks the submitted credentials and authenticates the user. If the user’s credentials are valid, the application displays a message and navigates to the Task page. Now we will add a table to the page and display a list of tasks assigned to the user. Like the login form, the task table is an element within a component. This gives an opportunity to examine components in greater depth.
 
-### `npm start`
+![Login Page](react-task-tutorial-03-tasks.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+For now, the page only displays a table with basic task information. In future installments, we will create the functionality to add, edit, and delete tasks. As with Part 2, I have simplified the process of building the page by providing a list of tasks in a Javascript file. All the files referenced in this article, and the sample React and Angular code are available from GitHub.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## **Angular Components and Data Presentation**
 
-### `npm test`
+An Angular component is a TypeScript file that includes three things. The first of these is a set of references to framework modules and other application resources.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```javascript
+import { Component, OnInit } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { Tasks } from '../data/tasks';
+```
 
-### `npm run build`
+The second is an @Component directive that defines component-specific metadata, such as the component’s selector (name) and the component modules it imports. It also includes references to the component template and template-specific styling. The component template can be the component's HTML code and Angular directive, or it can be a link to a file. Likewise, component styling can be either style-sheet code or a link to a component stylesheet.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```javascript
+@Component({
+ selector: 'app-tasks',
+ standalone: true,
+ imports: [
+   CommonModule,
+   RouterLink
+ ],
+ templateUrl: './tasks.component.html',
+ styleUrl: './tasks.component.scss'
+})
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+In this example, the @Component directive references the .html and .scss files that were generated with the Angular CLI’s ng generate command. This command saves these files to a folder and generates a .spec.ts for running component tests.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![Component Folder](react-tasks-tutorial-03-folder.png)
 
-### `npm run eject`
+The final and largest part of the component is the component class. The class declares internal and initializes class variables, a constructor for injecting dependencies, and methods. The injected dependencies are usually services that provide frequently used features.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```javascript
+export class TasksComponent implements OnInit {
+  tasks:any = Tasks;
+  tableData:any = null
+  showNav: boolean = false;
+  tableCols: any = ['name','description','added','updated', 'status'];
+  currentYear!: number;
+  user:any = null;
+  constructor() { }
+  ngOnInit(): void {}
+ }
+}
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Frequently, the class implements lifecycle events. Here the component class implements the ngOnInit lifecycle method. This method is invoked when the component is initialized and retrieves the authenticated user profile from the browser’s session storage. It also retrieves the list of tasks and applies a filter to display only the tasks assigned to the current user.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```javascript
+ngOnInit(): void {
+   this.user = JSON.parse(sessionStorage.getItem('user') || '{}');
+   this.tableData = this.tasks.filter((task:any) => 
+   task.user === this.user.userName
+   );
+}
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+The user tasks are displayed in the component’s template. In this case, the template is a .html file.
 
-## Learn More
+```html
+<div class="container" >
+ <h1>Tasks</h1>
+ <table>
+   <thead>
+    <tr><th *ngFor="let col of tableCols" scope="col">{{col}}</th></tr>
+   </thead>
+   <tbody>
+    <tr *ngFor="let item of tableData">
+     <td *ngFor="let col of tableCols">{{item[col]}}</td>
+    </tr>
+   </tbody>
+  </table>
+  <p><a routerLink="/login">Go to login</a></p>
+</div>
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Most of the elements in the component template are standard, static HTML. While other elements, such as the table header and table body include a mixture of HTML with Angular templates and template expressions. For example, the following line generates the table’s header row and displays the name of each column.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```html
+<th *ngFor="let col of tableCols" scope="col">{{col}}</th>
+```
 
-### Code Splitting
+The first \<th\> tag includes an \*ngFor directive that iterates through an array of column names. The double set of braces is a template directive that interpolates the iterated text into the static HTML element.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## **React Components and Data Presentation**
 
-### Analyzing the Bundle Size
+As with Routing and Forms, React’s approach to building components and displaying data has many parallels to its Angular equivalent. Conversely, these parallels also highlight each framework’s contrasting approach.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Unlike Angular, there is no React CLI, so each time you create a new React component, you just create a new Javascript file in the appropriate location. As with Angular or any other Javascript framework, you declare all the referenced components at the top of the file. In this case, the userTasks file is the list of tasks and tableCols is the name of each table column.
 
-### Making a Progressive Web App
+```javascript
+import { Link } from "react-router-dom";
+import userTasks from "../data/tasks";
+import tableCols from "../data/cols";
+import "./_pages.css";
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Following the references, you create the component definition. This is a single function that returns the entire component. This function highlights another key difference between Angular and React.
 
-### Advanced Configuration
+```javascript
+const Tasks = () => {
+ return (
+   <div>
+     <h1>Tasks</h1>
+     <table>
+       <thead>
+         <tr>{tableCols.map((col) => (<th key={col}>{col}</th>))}</tr>
+       </thead>
+       <tbody>{userTasks.map((task) => (
+        <tr key={task.id}>{tableCols.map((col) => (
+          <td key={col}>{task[col.toLowerCase()]}</td>
+        ))}</tr>
+      ))}</tbody>
+     </table>
+     <p><Link to="/">Logout</Link></p>
+   </div>
+ );
+};
+export default Tasks;
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+In an Angular component, there is a clear separation between the presentational elements, component model, and code. Presentation elements use HTML and Angular directives, and the component model and computation use Typescript. In React, these elements are mixed together and written using React’s unique JavaScript XML (JSX) syntax. For example, the following displays the table's top row. Inside the \<tr\>\</tr\> tags there are a pair of {} braces. Within the braces, the code uses a .map method to iterate through the list of column names and display them.
 
-### Deployment
+```html
+<tr>{tableCols.map((col) => (<th key={col}>{col}</th>))}</tr>
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+As we can see, both React and Angular have clear similarities in the ways they present data. However, each framework implements these principles in very different ways.
