@@ -1,6 +1,6 @@
-import {  Navigate } from "react-router-dom";
-import Users from '../data/users';
+import { Navigate } from "react-router-dom";
 import { useState } from 'react';
+import Users from '../data/users';
 import './_pages.css';
 
 
@@ -11,7 +11,6 @@ const Login = () => {
   const [password, setPassword] = useState("1234");
   const [user, setUser] = useState();
   
-
   return (
     <div className="card">
       <h1>Part 2:Login</h1>
@@ -29,11 +28,6 @@ const Login = () => {
         else{
           alert("Invalid email or password");
         }
-      
-       
-
-
-
       }} >
         
         <label>Email</label>
