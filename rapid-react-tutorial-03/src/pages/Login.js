@@ -1,7 +1,7 @@
 import { Navigate } from "react-router-dom";
 import { useState } from 'react';
 import Users from '../data/users';
-// import './_pages.css';
+import './_pages.css';
 
 
 const Login = () => {
