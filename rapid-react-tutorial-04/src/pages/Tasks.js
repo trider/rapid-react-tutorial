@@ -18,8 +18,8 @@ const Tasks = () => {
         <tbody>
           {userTasks.map((task) => (
             <tr key={task.id}>
-              {tableCols.map((col) => (
-                <td key={col}>{task[col.toLowerCase()]}</td>
+              {tableCols.map((col, index) => (
+                <td key={`${col}-${task.id}-${index}`}>{task[col.toLowerCase()]}</td>
               ))}
             </tr>
           ))}
