@@ -1,7 +1,7 @@
 import { Navigate } from "react-router-dom";
 import { useState } from 'react';
 import Users from '../data/users';
-import './_pages.css';
+// import './_pages.css';
 
 
 const Login = () => {
@@ -13,14 +13,14 @@ const Login = () => {
   
   return (
     <div className="card">
-      <h1>Part 2:Login</h1>
+      <h1>Login</h1>
       {user && (
         <Navigate to="/tasks" replace={true} />
       )}
       <form onSubmit={(e) => {
         e.preventDefault();
        
-        const currUser = Users.filter((user) => user.email === email && user.password === password)[0];
+        const currUser = Users.find((user) => user.email === email && user.password === password);
         if(currUser){
           alert(`Email: ${email}\nPassword: ${password}`);
           setUser(currUser);

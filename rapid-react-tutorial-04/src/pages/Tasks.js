@@ -1,13 +1,22 @@
-import { Link } from "react-router-dom";
+
+
+import { useLocation } from "react-router-dom";
+
 import userTasks from "../data/tasks";
 import tableCols from "../data/cols";
-import "./_pages.css";
 
-const Tasks = () => {
+import Table from 'react-bootstrap/Table';
+import Container from 'react-bootstrap/Container';
+import NavbarComponent from '../components/Navigation';
+import Footer from '../components/Footer';
+import Info from "../components/Info";
+
+
+const TaskTable = () => {
   return (
     <div>
       <h1>Tasks</h1>
-      <table>
+      <Table>
         <thead>
           <tr>
             {tableCols.map((col) => (
@@ -24,12 +33,37 @@ const Tasks = () => {
             </tr>
           ))}
         </tbody>
-      </table>
-      <p>
-        <Link to="/">Logout</Link>
-      </p>
+      </Table>
     </div>
   );
 };
+
+const Tasks = () => {
+
+  const location = useLocation();
+  const user = location.state;
+
+  
+
+  return (
+    <div>
+
+  
+      <NavbarComponent />
+      <Container style={{ marginTop: "50px" }}>
+
+      { user ?  <Info {...user} infoType='profile' variantInfo="info" /> : 'Loading...'}
+      
+   
+      <TaskTable />
+      
+      </Container>
+      <Container style={{ paddingTop: '20%' }} >
+        <Footer />
+      </Container>
+
+    </div>
+  );
+}
 
 export default Tasks;

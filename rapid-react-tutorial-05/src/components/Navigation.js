@@ -20,7 +20,7 @@ const NavbarComponent = () => {
           </Nav>
   
           <div className='Nav'>
-            <ReactLink to="/">Logout</ReactLink>
+            <ReactLink to="/login">Logout</ReactLink>
           </div>
         </Navbar.Collapse>
       </Container>

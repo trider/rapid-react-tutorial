@@ -1,12 +1,14 @@
 
-import './App.css';
+// import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import Login from './pages/Login';
 import Tasks from './pages/Tasks';
 
 function App() {
   return (
-    <div className="App">
+
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Login />} />
@@ -14,7 +16,6 @@ function App() {
         </Routes>
       </BrowserRouter>
 
-    </div>
   );
 }
 
