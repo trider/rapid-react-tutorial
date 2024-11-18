@@ -9,4 +9,6 @@ That is why I'm launching my latest tutorial, Rapid React. In this series, I aim
 Here are links to each part:
 
 * [Part 1: Getting Started](https://github.com/trider/rapid-react-tutorial/tree/main/react-task-tutorial-01 "Getting Started")
-  
+* [Part 2: Routing](https://github.com/trider/rapid-react-tutorial/tree/42fe4d84f1c8c040df3b3d6a360f622f12b45d70/rapid-react-tutorial-02 "Routing")
+* [Part 3: User Interaction and Forms](https://github.com/trider/rapid-react-tutorial/tree/42fe4d84f1c8c040df3b3d6a360f622f12b45d70/rapid-react-tutorial-03 "Forms")
+* [Part 4: Presenting Data](https://github.com/trider/rapid-react-tutorial/tree/42fe4d84f1c8c040df3b3d6a360f622f12b45d70/rapid-react-tutorial-04 "Presenting Data")

@@ -1,4 +1,4 @@
-# ReactJS for Angular Developers Part 1: Routing
+# Rapid React Part 2: Routing
 
 In Part 1, we started with a brief introduction to ReactJS. Next, we created and ran a boilerplate project. In this installment, we will begin building a Task Management web app. The app will have two pages. The first is a placeholder Login page with a title and link to the application’s Home (Tasks) page
 

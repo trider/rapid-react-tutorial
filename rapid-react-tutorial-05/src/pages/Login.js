@@ -31,11 +31,6 @@ const FormBody = () => {
         else{
           alert("Invalid email or password");
         }
-      
-       
-
-
-
       }} >
         
         <Form.Group className="mb-3" controlId="formBasicEmail">

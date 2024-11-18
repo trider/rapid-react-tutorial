@@ -1,7 +1,6 @@
 
 
 import { useLocation } from "react-router-dom";
-
 import userTasks from "../data/tasks";
 import tableCols from "../data/cols";
 
@@ -42,8 +41,6 @@ const Tasks = () => {
 
   const location = useLocation();
   const user = location.state;
-
-  
 
   return (
     <div>
