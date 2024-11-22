@@ -1,6 +1,5 @@
 
 
-import { useLocation } from "react-router-dom";
 import userTasks from "../data/tasks";
 import tableCols from "../data/cols";
 
@@ -8,7 +7,6 @@ import Table from 'react-bootstrap/Table';
 import Container from 'react-bootstrap/Container';
 import NavbarComponent from '../components/Navigation';
 import Footer from '../components/Footer';
-import Info from "../components/Info";
 
 
 const TaskTable = () => {
@@ -17,11 +15,7 @@ const TaskTable = () => {
       <h1>Tasks</h1>
       <Table>
         <thead>
-          <tr>
-            {tableCols.map((col) => (
-              <th key={col}>{col}</th>
-            ))}
-          </tr>
+          <tr>{tableCols.map((col) => (<th key={col}>{col}</th>))}</tr>
         </thead>
         <tbody>
           {userTasks.map((task) => (
@@ -39,26 +33,15 @@ const TaskTable = () => {
 
 const Tasks = () => {
 
-  const location = useLocation();
-  const user = location.state;
-
   return (
     <div>
-
-  
       <NavbarComponent />
       <Container style={{ marginTop: "50px" }}>
-
-      { user ?  <Info {...user} infoType='profile' variantInfo="info" /> : 'Loading...'}
-      
-   
-      <TaskTable />
-      
+        <TaskTable />
       </Container>
       <Container style={{ paddingTop: '20%' }} >
         <Footer />
       </Container>
-
     </div>
   );
 }

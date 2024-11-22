@@ -1,14 +1,13 @@
 import Users from '../data/users';
 import { useState } from 'react';
-import { useNavigate } from "react-router-dom";
+import {  Navigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
+
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
-
 import Footer from '../components/Footer';
-
-
 
 const FormBody = () => {
 
@@ -16,12 +15,12 @@ const FormBody = () => {
   const [email, setEmail] = useState("jonnygold@gmail.com");
   const [password, setPassword] = useState("1234");
   const [user, setUser] = useState();
-  const navigate = useNavigate();
   
-
+  
   return (
     <div >
-      { user ?  navigate('/tasks', { state: { user:user } }) : null}
+     {user && (<Navigate to="/tasks" replace={true} />
+      )}
       <Form onSubmit={(e) => {
         e.preventDefault();
         const currUser = Users.find((user) => user.email === email && user.password === password);
@@ -67,6 +66,8 @@ const FormBody = () => {
   );
 }
 
+
+
 const Login = () => {
   return (
     <div>
@@ -77,22 +78,74 @@ const Login = () => {
           </Card.Header>
           <Card.Body>
             <FormBody />
-
           </Card.Body>
          <Card.Footer>
           <Footer />
          </Card.Footer>
         </Card>
-
       </Container>
-      
     </div>
-
-
-
-
-
   );
 }
+
+
+// const Login = () => {
+
+
+//   const [email, setEmail] = useState("jonnygold@gmail.com");
+//   const [password, setPassword] = useState("1234");
+//   const [user, setUser] = useState();
+  
+
+//   return (
+//     <div className="card">
+//       <h1>Part 4:Login</h1>
+//       {user && (
+//         <Navigate to="/tasks" replace={true} />
+//       )}
+//       <form onSubmit={(e) => {
+//         e.preventDefault();
+       
+//         const currUser = Users.filter((user) => user.email === email && user.password === password)[0];
+//         if(currUser){
+//           alert(`Email: ${email}\nPassword: ${password}`);
+//           setUser(currUser);
+//         }
+//         else{
+//           alert("Invalid email or password");
+//         }
+//       }} >
+        
+//         <label>Email</label>
+
+//         <input 
+//           type="email" 
+//           name="username"  
+//           placeholder="Enter email"
+//           value={email}
+//           onChange={(e) => setEmail(e.target.value)} />
+//           <br/>
+
+//         <label>Password</label>
+      
+//           <input 
+//           type="password" 
+//           name="password"  
+//           placeholder="Password"
+//           value={password}
+//           onChange={(e) => setPassword(e.target.value)}
+//            />
+   
+//         <br/>
+ 
+//       <button type="submit">Login</button>
+
+
+//       </form>
+
+//     </div>
+
+//   );
+// }
 
 export default Login;

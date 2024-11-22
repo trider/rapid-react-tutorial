@@ -11,7 +11,7 @@ const Tasks = () => {
         <thead>
           <tr>
             {tableCols.map((col, index) => (
-              <th key={col}>{col}</th>
+              <th key={col}>({col}</th>
             ))}
           </tr>
         </thead>
