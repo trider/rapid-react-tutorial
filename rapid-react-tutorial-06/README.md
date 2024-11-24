@@ -16,7 +16,7 @@ As explained in [Part 3: User Interaction and Forms](https://www.linkedin.com/pu
 
 ## **Displaying Profile Information**
 
-Let’s start by adding a component to the Tasks page that displays the name of an authenticated user. The page also provides a button that displays the full profile. 
+Let’s start by adding a component to the Tasks page that displays the name of an authenticated user. The page also provides a button that displays the full profile.
 
 ![info](rr06info.png)
 
@@ -50,11 +50,8 @@ const Info = (props) => {
  );
 };
 
-
 export default Info;
 ```
-
-
 
 The component references the Bootstrap Alert component, a bar that displays information to the user. The Info function receives properties from the Tasks component. This information is used to set the Alert’s variant property to a specific color. The Alert uses the Welcome function to display a welcome message to the authenticated user. The component receives the prop’s user object. When the user clicks View Profile, an alert displays the user profile.
 
@@ -76,7 +73,7 @@ In FormBody, add the following code to pass the user profile props to the Tasks 
 
 ## **Displaying Props in the Tasks Component**
 
-Open Tasks.js. At the top of the page, add a reference to useLocation hook and the Info component. 
+Open Tasks.js. At the top of the page, add a reference to useLocation hook and the Info component.
 
 ```javascript
 import { useLocation } from "react-router-dom";
