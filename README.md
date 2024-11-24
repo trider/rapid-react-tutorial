@@ -12,3 +12,4 @@ Here are links to each part:
 * [Part 2: Routing](https://github.com/trider/rapid-react-tutorial/tree/42fe4d84f1c8c040df3b3d6a360f622f12b45d70/rapid-react-tutorial-02 "Routing")
 * [Part 3: User Interaction and Forms](https://github.com/trider/rapid-react-tutorial/tree/42fe4d84f1c8c040df3b3d6a360f622f12b45d70/rapid-react-tutorial-03 "Forms")
 * [Part 4: Presenting Data](https://github.com/trider/rapid-react-tutorial/tree/42fe4d84f1c8c040df3b3d6a360f622f12b45d70/rapid-react-tutorial-04 "Presenting Data")
+* [Part 5: TBD](https://github.com/trider/rapid-react-tutorial/tree/76624d7d8df10986c6152f5b2a85b503e4255751/rapid-react-tutorial-05 "TBD")

@@ -1,3 +1,5 @@
+![logo](mvds-business-card.jpg)
+
 # **Rapid React Part 1: Getting Started**
 
 Let’s face it: if you want to make it in the world of web development, either as a Frontend or full-stack developer, you really need to know React. This series is aimed to get you up and running, building your React-based web apps as rapidly as possible with a series of short and focused articles. In this installment, I will give you a brief introduction to React and how to create your first React project. The sample code for this installment is available on [Github](https://github.com/trider/rapid-react-tutorial/tree/0700c8e2cb86379c44c2939b75b70e308451e76c/react-task-tutorial-01).
