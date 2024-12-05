@@ -4,7 +4,6 @@ import TasksReducer from './TasksReducer';
 
 export const TasksContext = createContext();
 
-
 export const TasksProvider = ({ children }) => {
   const location = useLocation();
   const urlBase = 'http://localhost:3000/api/tasks'

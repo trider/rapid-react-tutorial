@@ -10,7 +10,7 @@ const Footer = () => {
       <Container >
       <Row>
         <Col sm={8}>&copy; 2024 MVDS</Col>
-        <Col style={{textAlign:"right"}}>Part 8</Col>
+        <Col style={{textAlign:"right"}}>Part 9</Col>
       </Row>
       </Container>
     </footer>

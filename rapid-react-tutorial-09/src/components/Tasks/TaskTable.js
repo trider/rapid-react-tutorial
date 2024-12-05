@@ -10,18 +10,17 @@ import ModalComponent from '../Modal';
 const TaskTable = () => {
 
   const { tasks, addTask, editTask, deleteTask  } = useContext(TasksContext);
+  const user = JSON.parse(localStorage.getItem('user'))
 
   const onAddTask = (task) => {
     addTask({ task })
   }
-   const onEditTask = (task) => {
-     editTask({task})
-   }
-
-   const onDeleleTask = (task) => {
+  const onEditTask = (task) => {
+    editTask({task})
+  }
+  const onDeleleTask = (task) => {
     deleteTask({task})
   }
-
 
   return (
     <div>
@@ -68,7 +67,7 @@ const TaskTable = () => {
                   task={{
                     name: 'New Task',
                     description: 'Task Description',
-                    user: 'jonnygold',
+                    user: user.userName,
                     status: 'do',
                     taskId: tasks.length + 1,
                     added: new Date().toISOString(),
