@@ -15,3 +15,5 @@ Here are links to each part:
 * [Part 5: Styling React with Bootstrap](https://github.com/trider/rapid-react-tutorial/tree/76624d7d8df10986c6152f5b2a85b503e4255751/rapid-react-tutorial-05 "Styling React with Bootstrap")
 * [Part 6: Passing Data with Props](https://github.com/trider/rapid-react-tutorial/tree/90c7cd8523c3b4bebeaa9062f0b6912a28343763/rapid-react-tutorial-06 "Passing Data with Props")
 * [Part 7: Intergrating APIs](https://github.com/trider/rapid-react-tutorial/tree/90c7cd8523c3b4bebeaa9062f0b6912a28343763/rapid-react-tutorial-07 "Part 7: Intergrating APIs" )
+* [Part 8: Part 8: Passing Props with the Context API](https://github.com/trider/rapid-react-tutorial/tree/e1f6eb3c1ebdf88fee1c2b93f9591cb9ec9fd1f5/rapid-react-tutorial-08 "Part 8: Passing Props with the Context API" )
+* [Part 9: State Management with Reducers](https://github.com/trider/rapid-react-tutorial/tree/e1f6eb3c1ebdf88fee1c2b93f9591cb9ec9fd1f5/rapid-react-tutorial-09 "Part 9: State Management with Reducers" )
