@@ -100,9 +100,10 @@ const TasksReducer = (state, action) => {
     throw new Error(Unhandled action type: ${action.type});  
   }  
 };
+export default TasksReducer
 ```
 
-export default TasksReducer
+
 
 The reducer’s set action initializes the reducer’s state and populates it with the user’s assigned tasks. Note that the list of tasks is filtered by the isActive flag. This is because the Tasks API does not delete tasks from the Tasks database. Instead, the delete route sets the isActive flag to false. This enables users to reinstate deleted tasks. The add action appends the state with a new task. The edit action iterates through the tasks list and updates the modified task. The delete function removes the specified task by filtering the tasks list.
 
