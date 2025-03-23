@@ -26,8 +26,17 @@ const FormBody = () => {
           }),
       });
       const data = await response.json();
-      setUser(data)
-      if(user)localStorage.setItem('user', JSON.stringify(user))
+     
+      if(data.isAuthenticated){
+        setUser(data)
+        localStorage.setItem('user', JSON.stringify(data))
+        
+        
+      }
+      else if(!data.isAuthenticated || data === undefined){
+        alert('Authentication Error\nPlease try agin')
+      }
+      
 
     } catch (error) {
       console.error('Error adding task:', error);
